@@ -1,24 +1,41 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include <trafficdata.h>
+#include "trafficdata.h"
 #include <stdio.h>
 
-// Structure NODE store structure data of record & address of next record
+// Structure store traffic datas of each record & address of next record
+
 typedef struct {
   TRAFFICDATA data;
   struct NODE *next;
-}NODE;
-//Declare structure queue store address of first NODE & last NODE
+} NODE;
+
+// Structure store address of first NODE & last NODE
+
 typedef struct {
   NODE *front;
   NODE *rear;
-}QUEUE;
+} QUEUE;
 
-extern QUEUE *q;
+// Address of structure QUEUE
+
+QUEUE *q;
+
+// Functions check if queue is empty or not
 
 int isEmpty(QUEUE *q);
+
+// Functions creat empty queue
+
 void initQueue(QUEUE *q);
+
+// Fuction add NODE to queue
+
 void enQueue(QUEUE *q, NODE *newNode);
+
+// Function take NODE from queue
+
 NODE *deQueue(QUEUE *q);
+
 #endif

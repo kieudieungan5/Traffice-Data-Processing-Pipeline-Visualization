@@ -1,0 +1,376 @@
+[
+	{
+		"streetName": "Phố Nguyễn Ngọc Nại",
+		"vehicleCount": 314,
+		"congestedCount": 94
+	},
+	{
+		"streetName": "Phố Cự Lộc",
+		"vehicleCount": 144,
+		"congestedCount": 66
+	},
+	{
+		"streetName": "Đường Vũ Trọng Phụng",
+		"vehicleCount": 250,
+		"congestedCount": 32
+	},
+	{
+		"streetName": "Ngõ 124 Phố Khương Trung",
+		"vehicleCount": 43,
+		"congestedCount": 11
+	},
+	{
+		"streetName": "Phố Vĩnh Hồ",
+		"vehicleCount": 146,
+		"congestedCount": 49
+	},
+	{
+		"streetName": "Đường Láng",
+		"vehicleCount": 614,
+		"congestedCount": 109
+	},
+	{
+		"streetName": "Ngõ 93 Phố Vũ Tông Phan",
+		"vehicleCount": 55,
+		"congestedCount": 20
+	},
+	{
+		"streetName": "Phố Hoàng Văn Thái",
+		"vehicleCount": 465,
+		"congestedCount": 88
+	},
+	{
+		"streetName": "Phố Vũ Tông Phan",
+		"vehicleCount": 153,
+		"congestedCount": 49
+	},
+	{
+		"streetName": "Internal/Junction",
+		"vehicleCount": 3354,
+		"congestedCount": 75
+	},
+	{
+		"streetName": "Phố Hoàng Ngân",
+		"vehicleCount": 84,
+		"congestedCount": 22
+	},
+	{
+		"streetName": "Phố Giáp Nhất",
+		"vehicleCount": 176,
+		"congestedCount": 39
+	},
+	{
+		"streetName": "Đường Nguyễn Trãi",
+		"vehicleCount": 1294,
+		"congestedCount": 247
+	},
+	{
+		"streetName": "Phố Thái Hà",
+		"vehicleCount": 154,
+		"congestedCount": 86
+	},
+	{
+		"streetName": "Phố Lê Trọng Tấn",
+		"vehicleCount": 356,
+		"congestedCount": 62
+	},
+	{
+		"streetName": "Phố Thái Thịnh",
+		"vehicleCount": 277,
+		"congestedCount": 104
+	},
+	{
+		"streetName": "Đường Lê Văn Lương",
+		"vehicleCount": 144,
+		"congestedCount": 26
+	},
+	{
+		"streetName": "Phố Quan Nhân",
+		"vehicleCount": 471,
+		"congestedCount": 141
+	},
+	{
+		"streetName": "Ngõ Thái Thịnh 1",
+		"vehicleCount": 42,
+		"congestedCount": 29
+	},
+	{
+		"streetName": "Phố Tây Sơn",
+		"vehicleCount": 792,
+		"congestedCount": 120
+	},
+	{
+		"streetName": "Đường Khương Đình",
+		"vehicleCount": 111,
+		"congestedCount": 29
+	},
+	{
+		"streetName": "Phố Hồ Đắc Di",
+		"vehicleCount": 4,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Phố Yên Lãng",
+		"vehicleCount": 108,
+		"congestedCount": 25
+	},
+	{
+		"streetName": "Ngõ 119 Hồ Đắc Di",
+		"vehicleCount": 13,
+		"congestedCount": 1
+	},
+	{
+		"streetName": "Phố Cù Chính Lan",
+		"vehicleCount": 210,
+		"congestedCount": 54
+	},
+	{
+		"streetName": "Ngõ Hồ Hố Mẻ",
+		"vehicleCount": 56,
+		"congestedCount": 13
+	},
+	{
+		"streetName": "Ngõ 119 Phố Hồ Đắc Di",
+		"vehicleCount": 12,
+		"congestedCount": 2
+	},
+	{
+		"streetName": "Đường Trường Chinh",
+		"vehicleCount": 923,
+		"congestedCount": 139
+	},
+	{
+		"streetName": "Ngõ 134 Phố Lê Trọng Tấn",
+		"vehicleCount": 60,
+		"congestedCount": 6
+	},
+	{
+		"streetName": "Cầu vượt Ngã Tư Sở",
+		"vehicleCount": 421,
+		"congestedCount": 26
+	},
+	{
+		"streetName": "Phố Nhân Hòa",
+		"vehicleCount": 31,
+		"congestedCount": 18
+	},
+	{
+		"streetName": "Phố Khương Trung",
+		"vehicleCount": 226,
+		"congestedCount": 106
+	},
+	{
+		"streetName": "Đường Nguyễn Ngọc Vũ",
+		"vehicleCount": 177,
+		"congestedCount": 26
+	},
+	{
+		"streetName": "Phố Cầu Mới",
+		"vehicleCount": 129,
+		"congestedCount": 11
+	},
+	{
+		"streetName": "Phố Nguyễn Viết Xuân",
+		"vehicleCount": 112,
+		"congestedCount": 20
+	},
+	{
+		"streetName": "Ngõ 181 Phố Quan Nhân",
+		"vehicleCount": 42,
+		"congestedCount": 18
+	},
+	{
+		"streetName": "Cầu Thượng Đình",
+		"vehicleCount": 109,
+		"congestedCount": 8
+	},
+	{
+		"streetName": "Phố Tam Khương",
+		"vehicleCount": 167,
+		"congestedCount": 52
+	},
+	{
+		"streetName": "Phố Đặng Văn Ngữ",
+		"vehicleCount": 5,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Ngõ 366 Tây Sơn",
+		"vehicleCount": 61,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Phố Vương Thừa Vũ",
+		"vehicleCount": 369,
+		"congestedCount": 111
+	},
+	{
+		"streetName": "Cầu Mọc",
+		"vehicleCount": 123,
+		"congestedCount": 1
+	},
+	{
+		"streetName": "Ngõ 50 Phố Hoàng Văn Thái",
+		"vehicleCount": 57,
+		"congestedCount": 5
+	},
+	{
+		"streetName": "Phố Nguyễn Ngọc Doãn",
+		"vehicleCount": 7,
+		"congestedCount": 1
+	},
+	{
+		"streetName": "Phố Tôn Thất Tùng",
+		"vehicleCount": 352,
+		"congestedCount": 75
+	},
+	{
+		"streetName": "Phố Thượng Đình",
+		"vehicleCount": 232,
+		"congestedCount": 68
+	},
+	{
+		"streetName": "Phố Chùa Bộc",
+		"vehicleCount": 131,
+		"congestedCount": 53
+	},
+	{
+		"streetName": "Cầu Hòa Mục",
+		"vehicleCount": 138,
+		"congestedCount": 10
+	},
+	{
+		"streetName": "Phố Khương Thượng",
+		"vehicleCount": 248,
+		"congestedCount": 73
+	},
+	{
+		"streetName": "Đường Lạc Hồng",
+		"vehicleCount": 46,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Royal City",
+		"vehicleCount": 96,
+		"congestedCount": 28
+	},
+	{
+		"streetName": "Ngõ 93 Phố Hoàng Văn Thái",
+		"vehicleCount": 88,
+		"congestedCount": 16
+	},
+	{
+		"streetName": "Ngõ 183 Phố Hoàng Văn Thái",
+		"vehicleCount": 44,
+		"congestedCount": 31
+	},
+	{
+		"streetName": "Cầu Mới",
+		"vehicleCount": 647,
+		"congestedCount": 5
+	},
+	{
+		"streetName": "Đường Vành đai 2",
+		"vehicleCount": 48,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Ngõ 61 Thái Thịnh",
+		"vehicleCount": 62,
+		"congestedCount": 9
+	},
+	{
+		"streetName": "Ngõ 21 Nguyễn Ngọc Nại",
+		"vehicleCount": 72,
+		"congestedCount": 1
+	},
+	{
+		"streetName": "Phố Tô Vĩnh Diện",
+		"vehicleCount": 43,
+		"congestedCount": 31
+	},
+	{
+		"streetName": "Phố Nguyễn Văn Tuyết",
+		"vehicleCount": 93,
+		"congestedCount": 18
+	},
+	{
+		"streetName": "Phố Chính Kinh",
+		"vehicleCount": 94,
+		"congestedCount": 37
+	},
+	{
+		"streetName": "Phố Trung Liệt",
+		"vehicleCount": 56,
+		"congestedCount": 6
+	},
+	{
+		"streetName": "Cầu Giáp Nhất",
+		"vehicleCount": 92,
+		"congestedCount": 2
+	},
+	{
+		"streetName": "Ngõ 47 Đường Láng",
+		"vehicleCount": 59,
+		"congestedCount": 22
+	},
+	{
+		"streetName": "Lối rẽ phải đi Yên Lãng",
+		"vehicleCount": 20,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Ngách 93/20 Phố Hoàng Văn Thái",
+		"vehicleCount": 8,
+		"congestedCount": 5
+	},
+	{
+		"streetName": "Ngõ 164 Phố Vương Thừa Vũ",
+		"vehicleCount": 92,
+		"congestedCount": 39
+	},
+	{
+		"streetName": "Ngõ 69A Phố Hoàng Văn Thái",
+		"vehicleCount": 16,
+		"congestedCount": 12
+	},
+	{
+		"streetName": "Phố Láng Hạ",
+		"vehicleCount": 7,
+		"congestedCount": 5
+	},
+	{
+		"streetName": "Ngõ 162 Phố Khương Trung",
+		"vehicleCount": 31,
+		"congestedCount": 16
+	},
+	{
+		"streetName": "Phố Đặng Tiến Đông",
+		"vehicleCount": 3,
+		"congestedCount": 3
+	},
+	{
+		"streetName": "Ngõ 177 Yên Lãng",
+		"vehicleCount": 13,
+		"congestedCount": 6
+	},
+	{
+		"streetName": "Cầu vượt Tây Sơn",
+		"vehicleCount": 11,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Ngõ 211 Phố Khương Trung",
+		"vehicleCount": 10,
+		"congestedCount": 3
+	},
+	{
+		"streetName": "Ngách 211/249 Phố Khương Trung",
+		"vehicleCount": 1,
+		"congestedCount": 0
+	},
+	{
+		"streetName": "Cầu vượt Láng Hạ - Lê Văn Lương",
+		"vehicleCount": 2,
+		"congestedCount": 1
+	}]

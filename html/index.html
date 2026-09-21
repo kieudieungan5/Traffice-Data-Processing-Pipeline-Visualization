@@ -36,37 +36,37 @@
     <div class="px-3 border-start border-end border-bottom">
       <div class="row">
         <div class="col-3 border-end">
-          <div class="nav flex-column pt-4">
+          <div class="nav flex-column pt-4 gap-4">
             <button
-              class="nav-link active text-dark"
+              class="active text-dark"
               data-bs-toggle="tab"
               data-bs-target="#dashboard"
             >
               Dashboard
             </button>
             <button
-              class="nav-link text-dark"
+              class="text-dark"
               data-bs-toggle="tab"
               data-bs-target="#vehicles"
             >
               Vehicles
             </button>
             <button
-              class="nav-link text-dark"
+              class="text-dark"
               data-bs-toggle="tab"
-              data-bs-target="#streets"
+              data-bs-target="#congestions"
             >
-              Streets
+              Congestions
             </button>
             <button
-              class="nav-link text-dark"
+              class="text-dark"
               data-bs-toggle="tab"
               data-bs-target="#analytics"
             >
               Analytics
             </button>
             <button
-              class="nav-link text-dark"
+              class="text-dark"
               data-bs-toggle="tab"
               data-bs-target="#settings"
             >
@@ -74,9 +74,11 @@
             </button>
           </div>
         </div>
+
         <div class="col-9">
           <div class="tab-content p-4">
             <div id="dashboard" class="tab-pane fade show active">
+
               <!-- Dashboard content -->
               <div class="h3">Overview</div>
               <div class="row gap-2 align-items-start">
@@ -84,7 +86,7 @@
                   <div class="card text-center">
                     <div class="card-body">
                       <h4 id="vehicleCount" class="card-title">3409</h4>
-                      <p class="cart-text">Monitored Vehicles</p>
+                      <p class="cart-text">Vehicles</p>
                     </div>
                   </div>
                 </div>
@@ -92,33 +94,77 @@
                   <div class="card text-center">
                     <div class="card-body">
                       <h4 id="vehicleType" class="card-title">3</h4>
-                      <p class="cart-text">Types of Vehicles</p>
+                      <p class="cart-text">Types</p>
                     </div>
                   </div>
                 </div>
                   <div class="card text-center col-sm-12 col-md-5 col-lg-2">
                     <div class="card-body">
-                      <h4 id="streetName" class="card-title">75</h4>
+                      <h4 id="streetCount" class="card-title">75</h4>
                       <p class="cart-text">Streets</p>
                     </div>
                   </div>
                   <div class="card text-center col-sm-12 col-md-5 col-lg-2">
                     <div class="card-body">
                       <h4 id="congestionCount" class="card-title">669.890</h4>
-                      <p class="cart-text">Congested Vehicle Records</p>
+                      <p class="cart-text">Congested Occurences</p>
                     </div>
                   </div>
                   <div class="card text-center col-sm-12 col-md-5 col-lg-2">
                     <div class="card-body">
                       <h4 id="uncongestionCount" class="card-title">378.685</h4>
-                      <p class="cart-text">Non-congested Vehicle Records</p>
+                      <p class="cart-text">Uncongested Occurences</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div id="vehicles" class="tab-pane fade">Vehicles content</div>
-              <div id="streets" class="tab-pane fade">Streets content</div>
+
+              <div id="vehicles" class="tab-pane fade">
+                <!-- Vehicles content -->
+                <div class="h3">Number of Vehicles per Street</div>
+                <div class="h5">Top 10 streets with most vehicles</div>
+                <table class="table table-striped table hover">
+                  <thead>
+                    <tr>
+                      <th>Street</th>
+                      <th>Number of Vehicles</th>
+                    </tr>
+                  </thead>
+                  <tbody id="topStreets"></tbody>
+                </table>
+
+                <div class="h5">Select street to see number of vehicles </div>
+                <select id="otherStreets"></select>
+                <p>
+                  Number of vehicles:
+                  <span id="otherVehicleCount"></span>
+                </p>
+              </div>
+              
+              <div id="congestions" class="tab-pane fade">
+                <!-- Street content -->
+                <div class="h3">Most Congested Streets</div>
+                <div class="h5">Top 10</div>
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>Street</th>
+                      <th>Number of Congestion Occurences</th>
+                    </tr>
+                  </thead>
+                  <tbody id="topCongestions"></tbody>
+                </table>
+
+                <div class="h5">Select street to see number of congested occurences </div>
+                <select id="otherCongestedStreet"></select>
+                <p>
+                  Number of vehicles:
+                  <span id="otherStreetCongestedCount"></span>
+                </p>
+              </div>
+
               <div id="analytics" class="tab-pane fade">Analytics content</div>
+
               <div id="settings" class="tab-pane fade">Settings content</div>
             </div>
           </div>
