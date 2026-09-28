@@ -3,17 +3,20 @@
 #include "queue.h"
 #include "trafficdata.h"
 
-// Array stores structs(contains name of street & count of vehicle Id unique on that street)
+// Array stores structs(contains name of street 
+// & count of vehicles monitored 
+// & count of congested occurences on that street)
 
 typedef struct {
   char streetName[150];
-  int vehicleCount;
+  int vehicleMonitored;
   int congestedCount;
+  double congestionRate;
 } STREET;
 
 STREET *streets = NULL;
 
-// Count of vehicles ids
+// Count of vehicles ids unique
 int vehicle_Id_Count = 0;
 
 // Count of vehicles types
@@ -22,17 +25,9 @@ int vehicle_Type_Count = 0;
 // Count of streets
 int street_Count = 0;
 
-// Count of records of vehicles congested & uncongested
+// Count of congested occurences & uncongested occurences
 int congested_Count = 0; 
 int uncongested_Count = 0;
-
-// Array stores structs(contains name of street & name of vehicle Id)
-  typedef struct {
-  char id[50];
-  char streetName[150];
-} VEHICLE_STREET;
-
-  VEHICLE_STREET *vehicleStreet = NULL;
 
 // Check if vehicle Id is exited
 
@@ -68,25 +63,12 @@ int isStreetNameExits(STREET *streets, int count, const char *name) {
 
   for(int i = 0; i < count; i++) {
     if(strcmp(streets[i].streetName, name) == 0) {
-      return 1;
+      return i;
     }
   }
 
-  return 0;
+  return -1;
 
-}
-
-// Check if street name + vehicle id is exited
-int isVehicleStreetExits(VEHICLE_STREET *vehicleStreet, int count, const char *id, const char *street) {
-
-  for(int i = 0; i < count; i++) {
-
-    if(strcmp(vehicleStreet[i].id, id) == 0 && (strcmp(vehicleStreet[i].streetName, street) == 0)) {
-      return 1;
-    }
-
-  }
-  return 0;
 }
 
 //Check if time step is exited
@@ -105,16 +87,6 @@ int isTimeStepExits(float timeStep[], int count, float time) {
 //Monitor vehicles
 
 void countOverview(QUEUE *q) {
-
-  // Count of id + street
-  int vehicle_Street_Count = 0;
-
-  // Count of street unknown
-  int street_Unknown = 0;
-
-  // Store max time step & count of time step
-  float maxTimeStep = 0;
-  int countTimeStep = 0;
 
   // Allocate memory
 
@@ -138,6 +110,7 @@ void countOverview(QUEUE *q) {
       || (timeStep == NULL)) {
     free(vehicleIds);
     free(vehicleTypes);
+    free(timeStep);
     return;
   }
 
@@ -180,74 +153,56 @@ void countOverview(QUEUE *q) {
 
     // Count vehicles on each street,
     // Count streets
+    // Count congested occurences
 
     if(strcmp(curNode->data.street_Name, "Unnamed Road") != 0) {
 
-      int found = 0;
-
-      // Check array store structs of id + street
-
-      for(int i = 0; i < vehicle_Street_Count; i++) {
-
-        // If vehicle id + street existed, continue next record
-
-        if(strcmp(vehicleStreet[i].id, curNode->data.vehicle_Id) == 0 
-        && strcmp(vehicleStreet[i].streetName, curNode->data.street_Name) == 0) {
-          found = 1;
-          break;
-        }
-      }
-
-      if(found) { 
-        free(curNode);
-        continue; 
-      }
-
-      // If not, add id + street to array
-
-      vehicleStreet = realloc(vehicleStreet, (vehicle_Street_Count + 1) * sizeof(VEHICLE_STREET));
-      strcpy(vehicleStreet[vehicle_Street_Count].id, curNode->data.vehicle_Id);
-      strcpy(vehicleStreet[vehicle_Street_Count].streetName, curNode->data.street_Name);
-
-      vehicle_Street_Count++;
-
-      // Check if street is looped 
-
+      // Check if street is looped
+      // If looped, count vehicle record, count congested record (if state is 1)
+      
       int streetFound = 0;
+      int streetIndex = isStreetNameExits(streets,
+                          street_Count,
+                          curNode->data.street_Name);
 
-      for(int i = 0; i < street_Count; i++) {
-
-        // If yes, count id, count vehicle id, count congested occurences
-
-        if(strcmp(streets[i].streetName, curNode->data.street_Name) == 0) {
-          streets[i].vehicleCount++;
-
-          if(curNode->data.isCongested == 1) {
-            streets[i].congestedCount += 1;
-          }
-
-          streetFound = 1;
-          break;
+      if(streetIndex != -1) {
+        streetFound = 1;
+        streets[streetIndex].vehicleMonitored++;
+        if(curNode->data.isCongested == 1) {
+            streets[streetIndex].congestedCount ++;
         }
-
       }
 
-      // If not, add street to array & set count vehicle is 1, congested occurences is 1 
-      // Count street
+      // If not, store street name, 
+      // set vehicle record is 1, congested record is 1 (if state is 1)
 
       if(streetFound == 0) {
+        STREET *temp = realloc(streets, (street_Count + 1) * sizeof(STREET));
 
-        streets = realloc(streets, (street_Count + 1) * sizeof(STREET));
+        if(temp == NULL) {
+          free(vehicleIds);
+          free(vehicleTypes);
+          free(timeStep);
+          free(streets);
+          return;
+        }
+
+        streets = temp;
 
         strcpy(streets[street_Count].streetName, curNode->data.street_Name);
 
-        streets[street_Count].vehicleCount = 1;
-
+        streets[street_Count].vehicleMonitored = 1;
         if(curNode->data.isCongested == 1) {
-          streets[street_Count].congestedCount = 1;
+          streets[street_Count].congestedCount =1;
         } else {
-          streets[street_Count].congestedCount = 0;
+          streets[street_Count].congestedCount =0;
         }
+        streets[street_Count].congestionRate = 0.0;
+
+        // printf("New street: %s | vehicle Monitored : %d | congestion Count : %d\n",
+        //   streets[street_Count].streetName,
+        //   streets[street_Count].vehicleMonitored,
+        //   streets[street_Count].congestedCount);
 
         street_Count++;
 
@@ -256,22 +211,22 @@ void countOverview(QUEUE *q) {
     }
 
     // Check time step
-    if(!isTimeStepExits(timeStep, countTimeStep, curNode->data.time_Step)) {
-      if(countTimeStep >= time_Step_Capacity) {
-        time_Step_Capacity *= 2;
-        char (*temp)[50] = realloc(timeStep, time_Step_Capacity * sizeof(*timeStep));
-        if(temp == NULL) {
-          free(timeStep);
-          return;
-        }
-        timeStep = temp;
-      }
-      timeStep[countTimeStep] = curNode->data.time_Step;
-      countTimeStep++;
-    }
-    if(curNode->data.time_Step > maxTimeStep) {
-      maxTimeStep = curNode->data.time_Step;
-    }
+    // if(!isTimeStepExits(timeStep, countTimeStep, curNode->data.time_Step)) {
+    //   if(countTimeStep >= time_Step_Capacity) {
+    //     time_Step_Capacity *= 2;
+    //     char (*temp)[50] = realloc(timeStep, time_Step_Capacity * sizeof(*timeStep));
+    //     if(temp == NULL) {
+    //       free(timeStep);
+    //       return;
+    //     }
+    //     timeStep = temp;
+    //   }
+    //   timeStep[countTimeStep] = curNode->data.time_Step;
+    //   countTimeStep++;
+    // }
+    // if(curNode->data.time_Step > maxTimeStep) {
+    //   maxTimeStep = curNode->data.time_Step;
+    // }
 
     //Count vehicles congested
     if(curNode->data.isCongested == 1) {
@@ -283,30 +238,149 @@ void countOverview(QUEUE *q) {
       uncongested_Count++;
     }
 
-    //Kiểm tra
     // if(strcmp(curNode->data.vehicle_Id, "bus0") == 0) {
     //   printf("%s %s %d\n", curNode->data.vehicle_Id, curNode->data.street_Name, curNode->data.isCongested);
     // }
 
-    // free(curNode);
+    free(curNode);
 
   }
 
   free(vehicleIds);
   free(vehicleTypes);
-  // free(streetNames);
   free(timeStep);
-
   // printf("Vehicle ids monitored: %d\n", vehicle_Id_Count);
   // printf("Vehicle types monitored: %d\n", vehicle_Type_Count); 
   // printf("Streets monitored: %d\n", street_Count); 
   // for(int i = 0; i < street_Count; i++) { 
   //   printf(
-  //     "Street %s: %d vehicles\n", 
+  //     "Street %s: %d vehicle records | %d congestion records\n",
   //     streets[i].streetName, 
-  //     streets[i].vehicleCount);
+  //     streets[i].vehicleMonitored,
+  //     streets[i].congestedCount);
   // }
   // printf("Records of congested vehicle: %d\n", congested_Count); 
   // printf("Records of uncongested vehicle: %d\n", uncongested_Count);
   // printf("Max time step: %f & count of time step: %d\n", maxTimeStep, countTimeStep);
 }
+
+// Calculate congestion rate
+
+void calculateCongestionRate() {
+
+  for(int i = 0; i < street_Count; i++) {
+    
+    if(streets[i].vehicleMonitored > 0) {
+      streets[i].congestionRate = ((double) streets[i].congestedCount 
+                                  / streets[i].vehicleMonitored) * 100;
+    } else {
+      streets[i].congestionRate = 0.0;
+    }
+
+  }
+
+}
+
+// Calculate median of vehicle records
+
+int medianVehicleMonitored() {
+
+  // Copy array street to a temperory array 
+
+  STREET *streetsTemp = malloc(street_Count * sizeof(STREET));
+  if(streetsTemp == NULL) {
+    perror("malloc");
+    return -1;
+  }
+
+  memcpy(streetsTemp, streets, street_Count * sizeof(STREET));
+
+  // Sort vehicle records in ascending order
+
+  for(int i = 0; i < street_Count; i++) {
+    for(int j = 0; j < street_Count; j++) {
+      if(streets[i].vehicleMonitored < streets[j].vehicleMonitored) {
+        STREET temp = streets[i];
+        streets[i] = streets[j];
+        streets[j] = temp;
+      }
+    }
+  }
+
+  // Take median vehicle records 
+
+  int median = streets[street_Count / 2].vehicleMonitored;
+  return median;
+
+}
+
+// Calculate median of congestion rate
+
+double medianCongestionRate() {
+
+  // Copy array street to a temperory array 
+
+  STREET *streetsTemp = malloc(street_Count * sizeof(STREET));
+  if(streetsTemp == NULL) {
+    perror("malloc");
+    return -1;
+  }
+
+  memcpy(streetsTemp, streets, street_Count * sizeof(STREET));
+
+  // Sort congestion rate in ascending order
+
+  for(int i = 0; i < street_Count; i++) {
+    for(int j = 0; j < street_Count; j++) {
+      if(streets[i].congestionRate < streets[j].congestionRate) {
+        STREET temp = streets[i];
+        streets[i] = streets[j];
+        streets[j] = temp;
+      }
+    }
+  }
+
+  // Take median vehicle records 
+
+  double median = streets[street_Count / 2].congestionRate;
+  return median;
+
+}
+
+// Find streets have vehicle record < median
+// & congestion rate > median
+
+STREET *streetAnomaly(int *anomalyCount) {
+
+  STREET *anomaly = malloc(street_Count * sizeof(STREET));
+  if(anomaly == NULL) {
+    perror("malloc");
+    *anomalyCount = 0;
+    return NULL;
+  }
+
+  *anomalyCount = 0;
+
+  int medianVehicle = medianVehicleMonitored();
+  double medianRate = medianCongestionRate();
+
+  for(int i = 0; i < street_Count; i++) {
+
+    if(streets[i].vehicleMonitored < medianVehicle
+      && streets[i].congestionRate > medianRate) {
+        
+        // printf("%s | Vehicle: %d | Congestion: %.2f%%\n",
+        //        streets[i].streetName,
+        //        streets[i].vehicleMonitored,
+        //        streets[i].congestionRate);
+        memcpy(&anomaly[*anomalyCount], &streets[i], sizeof(STREET));
+        (*anomalyCount)++;
+    }
+
+  }
+
+  return anomaly;
+
+}
+
+

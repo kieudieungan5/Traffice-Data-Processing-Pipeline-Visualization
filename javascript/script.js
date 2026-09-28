@@ -11,15 +11,15 @@ fetch("../json/overview.json")
       data.uncongested_Count;
   });
 
-// Read "street.json" and present top 10 streets having the most vehicles
-// Then present other streets to select
+// Read "street.json" and present top 10 streets having the most vehicle records
+// Then can choose other street
 
 fetch("../json/street.json")
   .then((Response) => Response.json())
   .then((data) => {
-    // Sort vehicle count on each street in descending order
+    // Sort vehicle records on each street in descending order
 
-    data.sort((a, b) => b.vehicleCount - a.vehicleCount);
+    data.sort((a, b) => b.vehicleRecord - a.vehicleRecord);
 
     // Take top 10 street have most vehicles
 
@@ -31,7 +31,7 @@ fetch("../json/street.json")
       const row = `
         <tr>
           <td>${street.streetName}</td>
-          <td>${street.vehicleCount}</td>
+          <td>${street.vehicleRecord}</td>
         </tr>
         `;
       tableBody.innerHTML += row;
@@ -55,12 +55,12 @@ fetch("../json/street.json")
       const selectedStreet = others.find(
         (street) => street.streetName === selection.value,
       );
-      vehicleCount.textContent = selectedStreet.vehicleCount;
+      vehicleCount.textContent = selectedStreet.vehicleRecord;
     });
 
-    // Sort congested count in descending order
+    // Sort congested records on each street in descending order
 
-    data.sort((a, b) => b.congestedCount - a.congestedCount);
+    data.sort((a, b) => b.congestedRecord - a.congestedRecord);
 
     // Take top 10 street have most congested occurences
 
@@ -72,7 +72,7 @@ fetch("../json/street.json")
       const row = `
       <tr>
         <td>${street.streetName}</td>
-        <td>${street.congestedCount}</td>
+        <td>${street.congestedRecord}</td>
       </tr>
       `;
       topCongestions.innerHTML += row;
@@ -100,6 +100,57 @@ fetch("../json/street.json")
       const selectedStreet = otherCongestedStreet.find(
         (street) => street.streetName === selectOtherCongestedStreet.value,
       );
-      otherStreetCongestedCount.textContent = selectedStreet.congestedCount;
+      otherStreetCongestedCount.textContent = selectedStreet.congestedRecord;
+    });
+
+    // Sort congestion rate on each street in descending order
+    // data.sort((a, b) => b.congestionRate - a.congestionRate);
+
+    // Take top 10 streets have the highest congestion rate
+
+    // const top10CongestionRate = data.slice(0, 10);
+
+    // const topCongestionRate = document.getElementById("abnomalStreet");
+
+    // top10CongestionRate.forEach((street, index) => {
+    //   const row = `
+    //   <tr>
+    //     <td>${street.streetName}</td>
+    //     <td>${street.vehicleRecord}</td>
+    //     <td>${street.congestionRate}</td>
+    //   </tr>
+    //   `;
+    //   topCongestionRate.innerHTML += row;
+    // });
+  });
+
+// Read median.json
+fetch("../json/median.json")
+  .then((Response) => Response.json())
+  .then((data) => {
+    document.getElementById("medianVehicleRecord").textContent =
+      data.median_Vehicle_Record;
+    document.getElementById("medianCongestionRateValue").textContent =
+      data.median_Congestion_Rate;
+  });
+
+// Read anomaly.json
+fetch("../json/anomaly.json")
+  .then((Response) => Response.json())
+  .then((data) => {
+    // Sort congestion rate on each street in descending order
+    data.sort((a, b) => b.congestionRate - a.congestionRate);
+
+    const anomalStreets = document.getElementById("abnomalStreet");
+
+    data.forEach((street, index) => {
+      const row = `
+      <tr>
+        <td>${street.streetName}</td>
+        <td>${street.vehicleRecord}</td>
+        <td>${street.congestionRate}</td>
+      </tr>
+      `;
+      anomalStreets.innerHTML += row;
     });
   });

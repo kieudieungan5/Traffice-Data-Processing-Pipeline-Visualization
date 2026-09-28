@@ -1,0 +1,71 @@
+[
+	{
+		"streetName": "Ngõ 124 Phố Khương Trung",
+		"vehicleRecord": 89,
+		"congestedRecord": 22,
+		"congestionRate": 24.72
+	}
+,
+	{
+		"streetName": "Cầu Mọc",
+		"vehicleRecord": 931,
+		"congestedRecord": 256,
+		"congestionRate": 27.50
+	}
+,
+	{
+		"streetName": "Ngõ 21 Nguyễn Ngọc Nại",
+		"vehicleRecord": 284,
+		"congestedRecord": 83,
+		"congestionRate": 29.23
+	}
+,
+	{
+		"streetName": "Phố Nhân Hòa",
+		"vehicleRecord": 494,
+		"congestedRecord": 168,
+		"congestionRate": 34.01
+	}
+,
+	{
+		"streetName": "Ngõ 61 Thái Thịnh",
+		"vehicleRecord": 729,
+		"congestedRecord": 260,
+		"congestionRate": 35.67
+	}
+,
+	{
+		"streetName": "Ngõ 69A Phố Hoàng Văn Thái",
+		"vehicleRecord": 906,
+		"congestedRecord": 395,
+		"congestionRate": 43.60
+	}
+,
+	{
+		"streetName": "Đường Lê Văn Lương",
+		"vehicleRecord": 2073,
+		"congestedRecord": 1174,
+		"congestionRate": 56.63
+	}
+,
+	{
+		"streetName": "Cầu Giáp Nhất",
+		"vehicleRecord": 1115,
+		"congestedRecord": 632,
+		"congestionRate": 56.68
+	}
+,
+	{
+		"streetName": "Ngõ 50 Phố Hoàng Văn Thái",
+		"vehicleRecord": 2028,
+		"congestedRecord": 1733,
+		"congestionRate": 85.45
+	}
+,
+	{
+		"streetName": "Phố Láng Hạ",
+		"vehicleRecord": 256,
+		"congestedRecord": 221,
+		"congestionRate": 86.33
+	}
+]

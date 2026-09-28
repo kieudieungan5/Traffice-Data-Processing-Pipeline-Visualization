@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include "statistic.h"
 
-// Function: write street name & number of vehicle on each street to "street.json"
+// Function: write street name & number of vehicle 
+// & number of congested occurences on each street 
+// to "street.json"
 void writeStreetToJson() {
 
   FILE *file = fopen("json/street.json", "w");
@@ -18,11 +20,14 @@ void writeStreetToJson() {
 
     fprintf(file, 
       "\t\t\"streetName\": \"%s\",\n"
-      "\t\t\"vehicleCount\": %d,\n"
-      "\t\t\"congestedCount\": %d\n",
+      "\t\t\"vehicleRecord\": %d,\n"
+      "\t\t\"congestedRecord\": %d,\n"
+      "\t\t\"congestionRate\": %.2f\n",
+
       streets[i].streetName,
-      streets[i].vehicleCount,
-      streets[i].congestedCount);
+      streets[i].vehicleMonitored,
+      streets[i].congestedCount,
+      streets[i].congestionRate);
 
     fprintf(file, "\t}");
 
@@ -74,6 +79,77 @@ void writeOverviewToJson() {
     vehicle_Type_Count);
 
   fprintf(file, "}");
+  
+  fclose(file);
 
+  printf("Wrote to overview.json\n");
+
+}
+
+// Function: write median of vehicle records & median of congestion rate 
+// to median.json
+
+void writeMedianToJson(int medianVehicleRecord, double medianCongestionRateValue) {
+
+  FILE *file = fopen("json/median.json", "w");
+
+  if(file == NULL) {
+    perror("fopen");
+    return;
+  }
+
+  fprintf(file, "{\n");
+
+  fprintf(file,
+    "\t\"median_Vehicle_Record\": %d,\n"
+    "\t\"median_Congestion_Rate\": %0.2f\n",
+    medianVehicleRecord,
+    medianCongestionRateValue);
+
+  fprintf(file, "}");
+
+  fclose(file);
+
+  printf("Wrote to median.json\n");
+
+}
+
+// Write anomaly streets to anomaly.json
+void writeAnomalyToJson(STREET *anomaly, int anomalyCount) {
+
+  FILE *file = fopen("json/anomaly.json", "w");
+
+  if(file == NULL) {
+    perror("fopen");
+    return;
+  }
+
+  fprintf(file, "[\n");
+
+  for(int i = 0; i < anomalyCount; i++) {
+
+    fprintf(file, "\t{\n");
+
+    fprintf(file, 
+      "\t\t\"streetName\": \"%s\",\n"
+      "\t\t\"vehicleRecord\": %d,\n"
+      "\t\t\"congestedRecord\": %d,\n"
+      "\t\t\"congestionRate\": %.2f\n",
+
+      anomaly[i].streetName,
+      anomaly[i].vehicleMonitored,
+      anomaly[i].congestedCount,
+      anomaly[i].congestionRate);
+
+    fprintf(file, "\t}\n");
+
+    if(i < anomalyCount - 1) {
+      fprintf(file, ",\n");
+    }
+    
+  }
+  fprintf(file, "]");
+  fclose(file);
+  printf("Wrote to anomaly.json\n");
 
 }

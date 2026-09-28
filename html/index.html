@@ -121,13 +121,13 @@
 
               <div id="vehicles" class="tab-pane fade">
                 <!-- Vehicles content -->
-                <div class="h3">Number of Vehicles per Street</div>
-                <div class="h5">Top 10 streets with most vehicles</div>
+                <div class="h3">Streets Have Most Vehicle Records</div>
+                <div class="h5">Top 10</div>
                 <table class="table table-striped table hover">
                   <thead>
                     <tr>
                       <th>Street</th>
-                      <th>Number of Vehicles</th>
+                      <th>Vehicle Records</th>
                     </tr>
                   </thead>
                   <tbody id="topStreets"></tbody>
@@ -143,19 +143,19 @@
               
               <div id="congestions" class="tab-pane fade">
                 <!-- Street content -->
-                <div class="h3">Most Congested Streets</div>
+                <div class="h3">Streets have most congested occurences</div>
                 <div class="h5">Top 10</div>
                 <table class="table table-striped table-hover">
                   <thead>
                     <tr>
                       <th>Street</th>
-                      <th>Number of Congestion Occurences</th>
+                      <th>Congested Occurences</th>
                     </tr>
                   </thead>
                   <tbody id="topCongestions"></tbody>
                 </table>
 
-                <div class="h5">Select street to see number of congested occurences </div>
+                <div class="h5">Select street</div>
                 <select id="otherCongestedStreet"></select>
                 <p>
                   Number of vehicles:
@@ -163,9 +163,34 @@
                 </p>
               </div>
 
-              <div id="analytics" class="tab-pane fade">Analytics content</div>
+              <div id="analytics" class="tab-pane fade">
+              <!-- Analytics content -->
+               <div class="h3">Congested streets but having lower vehicle records</div>
 
-              <div id="settings" class="tab-pane fade">Settings content</div>
+               <div>
+                <span>*Median of Vehicle Records On Each Street: </span>
+                <span id="medianVehicleRecord"></span>
+               </div>
+
+               <div>
+                <span>*Median of Congestion Rate On Each Street: </span>
+                <span id="medianCongestionRateValue"></span>
+               </div>
+
+               <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Street</th>
+                    <th>Vehicle Records</th>
+                    <th>Congestion Rate</th>
+                  </tr>
+                </thead>
+                <tbody id="abnomalStreet">
+                </tbody>
+               </table>
+              </div>
+
+              <div id="settings" class="tab-pane fade"></div>
             </div>
           </div>
         </div>

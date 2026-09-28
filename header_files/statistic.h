@@ -12,8 +12,9 @@ extern int uncongested_Count;
 
 typedef struct {
     char streetName[150];
-    int vehicleCount;
+    int vehicleMonitored;
     int congestedCount;
+    double congestionRate;
 } STREET;
 extern STREET *streets;
 
@@ -22,5 +23,13 @@ extern STREET *streets;
 // int monitorVehicle(QUEUE *q);
 
 void countOverview(QUEUE *q);
+
+void calculateCongestionRate();
+
+int medianVehicleMonitored();
+
+double medianCongestionRate();
+
+STREET *streetAnomaly(int *anomalyCount);
 
 #endif
