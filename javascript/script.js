@@ -1,4 +1,4 @@
-fetch("../json/overview.json")
+fetch("./json/overview.json")
   .then((Response) => Response.json())
   .then((data) => {
     document.getElementById("vehicleCount").textContent = data.vehicle_Id_Count;
@@ -14,7 +14,7 @@ fetch("../json/overview.json")
 // Read "street.json" and present top 10 streets having the most vehicle records
 // Then can choose other street
 
-fetch("../json/street.json")
+fetch("./json/street.json")
   .then((Response) => Response.json())
   .then((data) => {
     // Sort vehicle records on each street in descending order
@@ -125,7 +125,7 @@ fetch("../json/street.json")
   });
 
 // Read median.json
-fetch("../json/median.json")
+fetch("./json/median.json")
   .then((Response) => Response.json())
   .then((data) => {
     document.getElementById("medianVehicleRecord").textContent =
@@ -135,7 +135,7 @@ fetch("../json/median.json")
   });
 
 // Read anomaly.json
-fetch("../json/anomaly.json")
+fetch("./json/anomaly.json")
   .then((Response) => Response.json())
   .then((data) => {
     // Sort congestion rate on each street in descending order
