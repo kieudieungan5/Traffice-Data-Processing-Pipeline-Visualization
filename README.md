@@ -1,1 +1,3 @@
 The dataset "hanoi_traffic_full.csv" contains vehicle records collected from streets in Hanoi over a monitored period of time. I used C to read and analyze the dataset and write the calculated results to JSON files. JavaScript then reads the JSON data and dynamically updates the corresponding HTML elements. Therefore, the traffic dashboard on the web page is updated based on the latest processed data.
+
+[Traffice-Data-Processing-Pipeline-Visualization](https://kieudieungan5.github.io/Traffice-Data-Processing-Pipeline-Visualization/)
