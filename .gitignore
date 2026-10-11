@@ -1,7 +1,5 @@
 #Compiled file
 *.o
-#Data file
-*.csv
 #Execute file
 traffic
 #OS 
